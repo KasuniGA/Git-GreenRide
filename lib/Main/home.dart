@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:green/Main/log.dart';
-import 'package:green/Main/re.dart';
+import 'package:green/Main/login_form.dart';
+import 'package:green/Main/register_form.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -1,16 +1,16 @@
 // ignore_for_file: camel_case_types, file_names, unused_import
 import 'package:flutter/material.dart';
-import 'package:green/Main/gome.dart';
-import 'package:green/theam/profile.dart';
+import 'package:green/profile.dart';
+import 'package:green/second_screens/transport_schedule.dart';
 
-class oneway extends StatefulWidget {
-  const oneway({super.key});
+class RideShare extends StatefulWidget {
+  const RideShare({super.key});
 
   @override
-  State<oneway> createState() => _onewayState();
+  State<RideShare> createState() => _RideShareState();
 }
 
-class _onewayState extends State<oneway> {
+class _RideShareState extends State<RideShare> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -37,18 +37,18 @@ class _onewayState extends State<oneway> {
                 children: [
                   const DrawerHeader(
                       child: Center(
-                        child: Text(
-                          "Green Ride Menu",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      )),
+                    child: Text(
+                      "Green Ride Menu",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  )),
                   ListTile(
                     leading: const Icon(Icons.people),
                     title: const Text("User"),
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (_) {
-                        return const HomePage();
+                        return const TransportSchedule();
                       }));
                     },
                   ),
@@ -58,27 +58,7 @@ class _onewayState extends State<oneway> {
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (_) {
-                        return const HomePage();
-                      }));
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.task),
-                    title: const Text("Activity"),
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) {
-                        return const HomePage();
-                      }));
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.settings),
-                    title: const Text("Settings"),
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) {
-                        return const HomePage();
+                        return const Profile();
                       }));
                     },
                   ),
@@ -97,20 +77,11 @@ class _onewayState extends State<oneway> {
                         child: TextField(
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            hintText: 'NSBM Location',
+                            hintText: 'Pick Up Location',
                           ),
                         ),
                       ),
                     ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter Your Crrunt Location',
-                    ),
                   ),
                 ),
               ],
@@ -122,16 +93,7 @@ class _onewayState extends State<oneway> {
                   child: TextField(
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: 'Enter Your Crrunt Location',
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter Your Crrunt Location',
+                      hintText: 'Drop Location',
                     ),
                   ),
                 ),

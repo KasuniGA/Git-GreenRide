@@ -5,8 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'image.dart';
-
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -45,7 +43,7 @@ class _ProfileState extends State<Profile> {
                   radius: 72,
                   backgroundImage: NetworkImage(
                       'https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg',
-                      scale: 1),
+                      scale: 0.5),
                 ),
           Positioned(
             bottom: -6,

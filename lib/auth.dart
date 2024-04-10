@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:green/Main/gome.dart';
-import 'package:green/users/users.dart';
+import 'package:green/Main/home.dart';
+import 'package:green/home_page/main_home.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -13,7 +13,7 @@ class AuthPage extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return const Users();
+              return const MainHome();
             } else {
               return const HomePage();
             }

@@ -41,9 +41,9 @@ dependencies:
   cloud_firestore: ^4.15.10
   fluttertoast: ^8.2.4
   image_picker: ^1.0.7
-  geolocator: ^11.0.0
-  google_maps_flutter: ^2.2.5
-  location: ^6.0.1
+  # geolocator: ^11.0.0
+  # google_maps_flutter: ^2.2.5
+  # location: ^6.0.1
 
 dev_dependencies:
   flutter_test:
