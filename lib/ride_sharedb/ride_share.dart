@@ -1,5 +1,6 @@
 // ignore_for_file: camel_case_types, file_names, unused_import, unused_local_variable
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:green/profile.dart';
 import 'package:green/ride_sharedb/return_ride.dart';
 import 'package:green/ride_sharedb/share_button.dart';
@@ -20,12 +21,15 @@ class _RideShareState extends State<RideShare> {
       ReturnRideDatabaseServises();
 
   Widget _buildUi() {
-    return SafeArea(
-        child: Column(
-      children: [
-        _messagesListView(),
-      ],
-    ));
+    return Container(
+      color: const Color.fromARGB(255, 128, 179, 255),
+      child: SafeArea(
+          child: Column(
+        children: [
+          _messagesListView(),
+        ],
+      )),
+    );
   }
 
   Widget _messagesListView() {
@@ -50,6 +54,7 @@ class _RideShareState extends State<RideShare> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),
                     child: Card(
+                      color: const Color.fromARGB(200, 55, 133, 255),
                       elevation: 5,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
@@ -113,12 +118,14 @@ class _RideShareState extends State<RideShare> {
 //   R E T U R N            R I D E              D A T A B A S E
 
   Widget _rbuildUi() {
-    return SafeArea(
-        child: Column(
-      children: [
-        _rmessagesListView(),
-      ],
-    ));
+    return Container(
+      color: const Color.fromARGB(255, 128, 179, 255),
+      child: Column(
+        children: [
+          _rmessagesListView(),
+        ],
+      ),
+    );
   }
 
   Widget _rmessagesListView() {
@@ -143,6 +150,7 @@ class _RideShareState extends State<RideShare> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),
                     child: Card(
+                      color: const Color.fromARGB(200, 55, 133, 255),
                       elevation: 5,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
@@ -210,14 +218,10 @@ class _RideShareState extends State<RideShare> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            actions: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                      return const UserProfile();
-                    }));
-                  },
-                  icon: const Icon(Icons.person))
+            actions: const [
+              Image(
+                  image:
+                      AssetImage("assets/logo_trial-VqAv6Aw70-transformed.png"))
             ],
             bottom: const TabBar(
               tabs: [Tab(text: "One Way"), Tab(text: "Return Way")],
@@ -225,19 +229,23 @@ class _RideShareState extends State<RideShare> {
           ),
           drawer: Drawer(
             child: Container(
-              color: Colors.grey,
+              color: const Color.fromARGB(254, 179, 230, 255),
               child: ListView(
                 children: [
                   const DrawerHeader(
                       child: Center(
                     child: Text(
                       "Green Ride Menu",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                     ),
                   )),
                   ListTile(
                     leading: const Icon(Icons.people),
-                    title: const Text("User"),
+                    title: const Text(
+                      "U S E R",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (_) {
@@ -247,10 +255,12 @@ class _RideShareState extends State<RideShare> {
                   ),
                   ListTile(
                     leading: const Icon(Icons.home),
-                    title: const Text("Home"),
+                    title: const Text(
+                      "H O M E",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) {
+                      Navigator.of(context).pop(MaterialPageRoute(builder: (_) {
                         return const UserProfile();
                       }));
                     },
@@ -259,64 +269,84 @@ class _RideShareState extends State<RideShare> {
               ),
             ),
           ),
-          body: TabBarView(children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) {
-                        return const ShareButton();
-                      }));
-                    },
-                    child: const SizedBox(
+          body: Container(
+            color: const Color.fromARGB(255, 128, 179, 255),
+            child: TabBarView(children: [
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(
                       height: 20,
-                      width: double.infinity,
-                      child: Text(
-                        "Share Ride",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
                     ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _buildUi()),
-                ],
-              ),
-            ),
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) {
-                        return const ReturnShareButton();
-                      }));
-                    },
-                    child: const SizedBox(
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (_) {
+                                return const ReturnShareButton();
+                              }));
+                            },
+                            child: const Text(
+                              "Share Ride",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(254, 153, 51, 255)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        child: _buildUi()),
+                    const SizedBox(
                       height: 20,
-                      width: double.infinity,
-                      child: Text(
-                        "Share Ride",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
                     ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _rbuildUi()),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ]),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (_) {
+                                return const ReturnShareButton();
+                              }));
+                            },
+                            child: const Text(
+                              "Share Ride",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(254, 153, 51, 255)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        child: _rbuildUi()),
+                  ],
+                ),
+              ),
+            ]),
+          ),
         ));
   }
 }

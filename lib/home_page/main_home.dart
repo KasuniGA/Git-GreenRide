@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_import
+// ignore_for_file: unnecessary_import, unnecessary_const
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,59 +21,33 @@ class _MainHomeState extends State<MainHome> {
   Widget stwidet() {
     return Center(
       child: GestureDetector(
-        child: const SizedBox(
-          height: 150,
+        child: SizedBox(
+          height: 200,
           width: 300,
           child: Card(
-            color: Colors.grey,
-            child: SizedBox(
-              height: 200,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      "Transport Schedules",
-                      style: TextStyle(fontSize: 30),
-                      textAlign: TextAlign.center,
-                    ),
-                    Icon(Icons.arrow_forward)
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-            return const TransportSchedule();
-          }));
-        },
-      ),
-    );
-  }
-
-  Widget ndwidet() {
-    return Center(
-      child: GestureDetector(
-        child: const SizedBox(
-          height: 150,
-          width: 300,
-          child: Card(
-            color: Colors.grey,
-            child: SizedBox(
-              height: 200,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      "Transport Schedules",
-                      style: TextStyle(fontSize: 30),
-                      textAlign: TextAlign.center,
-                    ),
-                    Icon(Icons.arrow_forward)
-                  ],
+            color: const Color.fromARGB(254, 0, 156, 120),
+            child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/school bus-cuate.png'))),
+              child: const SizedBox(
+                height: 150,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Transport Schedules",
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -91,24 +65,33 @@ class _MainHomeState extends State<MainHome> {
   Widget rdwidet() {
     return Center(
       child: GestureDetector(
-        child: const SizedBox(
-          height: 150,
+        child: SizedBox(
+          height: 200,
           width: 300,
           child: Card(
-            color: Colors.grey,
-            child: SizedBox(
-              height: 200,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      "Ride Sharing",
-                      style: TextStyle(fontSize: 30),
-                      textAlign: TextAlign.center,
-                    ),
-                    Icon(Icons.arrow_forward)
-                  ],
+            color: const Color.fromARGB(220, 22, 51, 154),
+            child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/Carpool-cuate.png'))),
+              child: const SizedBox(
+                height: 150,
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Ride Sharing",
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -123,25 +106,51 @@ class _MainHomeState extends State<MainHome> {
     );
   }
 
+  Widget slogn() {
+    return const Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "G R E E N ",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 34,
+                  color: const Color.fromARGB(254, 0, 156, 120)),
+            ),
+            Text(
+              " R I D E",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 34,
+                  color: const Color.fromARGB(220, 22, 51, 154)),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 6,
+        ),
+        Text(
+          "Navigate, Share, Commute Greener",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-              Navigator.of(context).pop(MaterialPageRoute(builder: (_) {
-                return const LoginPage();
-              }));
-            },
-          ),
+        actions: const [
+          Image(
+              image: AssetImage("assets/logo_trial-VqAv6Aw70-transformed.png"))
         ],
       ),
       drawer: Drawer(
         child: Container(
-          color: Colors.grey,
+          color: const Color.fromARGB(254, 179, 230, 255),
           child: ListView(
             children: [
               const DrawerHeader(
@@ -152,8 +161,23 @@ class _MainHomeState extends State<MainHome> {
                 ),
               )),
               ListTile(
-                leading: const Icon(Icons.people),
-                title: const Text("Profile"),
+                leading: const Icon(Icons.home),
+                title: const Text(
+                  "H O M E",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                    return const MainHome();
+                  }));
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: const Text(
+                  "P R O F I L E ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                     return const UserProfile();
@@ -161,20 +185,31 @@ class _MainHomeState extends State<MainHome> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.home),
-                title: const Text("Home"),
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                    return const RideShare();
-                  }));
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.home),
-                title: const Text("DB WEIde"),
+                leading: const Icon(Icons.bus_alert),
+                title: const Text(
+                  "A D M I N",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                     return const TransportWidgetDb();
+                  }));
+                },
+              ),
+              Expanded(
+                  child: Container(
+                height: 380,
+              )),
+              ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text(
+                  "L O G O U T ",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pop(MaterialPageRoute(builder: (_) {
+                    return const LoginPage();
                   }));
                 },
               ),
@@ -182,20 +217,24 @@ class _MainHomeState extends State<MainHome> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 30, 0, 15),
-        child: Column(
-          children: [
-            stwidet(),
-            const SizedBox(
-              height: 50,
-            ),
-            ndwidet(),
-            const SizedBox(
-              height: 50,
-            ),
-            rdwidet(),
-          ],
+      body: Container(
+        color: const Color.fromARGB(255, 179, 255, 224),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 30, 0, 15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              slogn(),
+              const SizedBox(
+                height: 80,
+              ),
+              stwidet(),
+              const SizedBox(
+                height: 50,
+              ),
+              rdwidet(),
+            ],
+          ),
         ),
       ),
     );

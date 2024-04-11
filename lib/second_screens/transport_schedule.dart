@@ -1,14 +1,11 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // ignore_for_file: unused_local_variable
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:green/Main/login_form.dart';
+import 'package:green/home_page/main_home.dart';
 import 'package:green/profile.dart';
-import 'package:green/ride_sharedb/ride_share.dart';
 import 'package:green/second_screens/database_servises.dart';
 import 'package:green/second_screens/dbclasses.dart';
-import 'package:green/second_screens/transport_widget.dart';
 
 class TransportSchedule extends StatefulWidget {
   const TransportSchedule({super.key});
@@ -25,37 +22,34 @@ class _TransportScheduleState extends State<TransportSchedule> {
     return Scaffold(
         drawer: Drawer(
           child: Container(
-            color: Colors.grey,
+            color: const Color.fromARGB(255, 153, 255, 235),
             child: ListView(
               children: [
                 const DrawerHeader(
                     child: Center(
                   child: Text(
-                    "Green Ride Menu",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    "G R E E N  R I D E  M E N U",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 )),
                 ListTile(
-                  leading: const Icon(Icons.people),
-                  title: const Text("User"),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                      return const TransportWidgetDb();
-                    }));
-                  },
-                ),
-                ListTile(
                   leading: const Icon(Icons.home),
-                  title: const Text("Home"),
+                  title: const Text(
+                    "H O M E",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                      return const RideShare();
+                      return const MainHome();
                     }));
                   },
                 ),
                 ListTile(
                   leading: const Icon(Icons.person),
-                  title: const Text("Profile"),
+                  title: const Text(
+                    "P R O F I L E",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                       return const UserProfile();
@@ -68,27 +62,24 @@ class _TransportScheduleState extends State<TransportSchedule> {
         ),
         appBar: AppBar(
           title: const Text("Transport Schedule"),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.logout),
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.of(context).pop(MaterialPageRoute(builder: (_) {
-                  return const LoginPage();
-                }));
-              },
-            ),
+          actions: const [
+            Image(
+                image:
+                    AssetImage("assets/logo_trial-VqAv6Aw70-transformed.png"))
           ],
         ),
         body: _buildUi());
-      }
+  }
 
   Widget _buildUi() {
     return SafeArea(
-        child: Column(
-      children: [
-        _messagesListView(),
-      ],
+        child: Container(
+      color: const Color.fromARGB(255, 179, 255, 224),
+      child: Column(
+        children: [
+          _messagesListView(),
+        ],
+      ),
     ));
   }
 
@@ -114,6 +105,7 @@ class _TransportScheduleState extends State<TransportSchedule> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),
                     child: Card(
+                      color: const Color.fromARGB(255, 0, 156, 102),
                       elevation: 5,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
@@ -121,7 +113,8 @@ class _TransportScheduleState extends State<TransportSchedule> {
                         padding: const EdgeInsets.all(15),
                         child: GestureDetector(
                           onLongPress: () {
-                            _databaseServises.deleteTransport(transportID as String);
+                            _databaseServises
+                                .deleteTransport(transportID as String);
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +135,6 @@ class _TransportScheduleState extends State<TransportSchedule> {
                               const SizedBox(height: 5),
                               Text(transportID.Time),
                             ],
-                            
                           ),
                         ),
                       ),
