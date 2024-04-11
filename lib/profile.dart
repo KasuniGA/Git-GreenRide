@@ -1,71 +1,148 @@
-// ignore_for_file: file_names, unused_element, non_constant_identifier_names, unused_field, unused_import
 
-import 'dart:typed_data';
-import 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class UserProfile extends StatefulWidget {
+  const UserProfile({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<UserProfile> createState() => _UserProfileState();
 }
 
-class _ProfileState extends State<Profile> {
-  final currentUser = FirebaseAuth.instance.currentUser;
+class _UserProfileState extends State<UserProfile> {
+  // Replace these with actual data retrieval logic
+  String userName = "John Doe";
+  String userEmail = "johndoe@example.com";
+  String userContact = "+1234567890";
 
-  Uint8List? _image;
+  // Flags to control edit mode
+  bool isEditing = false;
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController contactController = TextEditingController();
 
-  void SelectImage() {
-    void selectImage() async {
-      Uint8List img = await pickImage(ImageSource.gallery);
-      setState(() {
-        _image = img;
-      });
-    }
+  @override
+  void initState() {
+    super.initState();
+    // Initialize controllers with actual data (from database)
+    nameController.text = userName;
+    emailController.text = userEmail;
+    contactController.text = userContact;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile Page"),
-      ),
-      body: ListView(
-        children: [
-          _image != null
-              ? CircleAvatar(
-                  radius: 72,
-                  backgroundImage: MemoryImage(_image!),
-                )
-              : const CircleAvatar(
-                  radius: 72,
-                  backgroundImage: NetworkImage(
-                      'https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg',
-                      scale: 0.5),
-                ),
-          Positioned(
-            bottom: -6,
-            left: 80,
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.add_a_photo),
-            ),
+        title: const Text("Profile"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                isEditing = !isEditing;
+              });
+            },
+            icon: Icon(isEditing ? Icons.save : Icons.edit),
           ),
-          const SizedBox(
-            height: 40,
-          ),
-          Text(
-            currentUser!.email!,
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.grey),
-          ),
-          const SizedBox(height: 28),
         ],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            // Profile picture (replace with your implementation)
+            const CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage(
+                  "assets/profile_pic.png"), // Replace with your asset path
+            ),
+            const SizedBox(height: 20),
+            // User name
+            Row(
+              children: [
+                const Text(
+                  "Name:",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    controller: nameController,
+                    enabled: isEditing,
+                    decoration: const InputDecoration(
+                      hintText: "Enter your name",
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            // User email
+            Row(
+              children: [
+                const Text(
+                  "Email:",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    controller: emailController,
+                    enabled: false, // Email should generally not be editable
+                    decoration: const InputDecoration(
+                      hintText: "Your email address",
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            // User contact
+            Row(
+              children: [
+                const Text(
+                  "Contact:",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: TextField(
+                    controller: contactController,
+                    enabled: isEditing,
+                    decoration: const InputDecoration(
+                      hintText: "Enter your contact number",
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            // Update button (replace with backend call)
+            Visibility(
+              visible: isEditing,
+              child: ElevatedButton(
+                onPressed: () {
+                  // Update user data in your database here
+                  // e.g., updateFirestoreUserData(nameController.text, contactController.text);
+                  setState(() {
+                    userName = nameController.text;
+                    userContact = contactController.text;
+                    isEditing = false;
+                  });
+                },
+                child: const Text("Update Profile"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  pickImage(ImageSource gallery) {}
+  // Replace this with your actual database update function (placeholder)
+  void updateFirestoreUserData(String name, String contact) {
+    // Implement your logic to update data in Firestore or your chosen backend
+    print("Updating user data: name: $name, contact");
+    }
 }

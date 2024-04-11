@@ -1,4 +1,6 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: unused_local_variable
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:green/Main/login_form.dart';
@@ -56,7 +58,7 @@ class _TransportScheduleState extends State<TransportSchedule> {
                   title: const Text("Profile"),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                      return const Profile();
+                      return const UserProfile();
                     }));
                   },
                 ),
@@ -79,7 +81,7 @@ class _TransportScheduleState extends State<TransportSchedule> {
           ],
         ),
         body: _buildUi());
-  }
+      }
 
   Widget _buildUi() {
     return SafeArea(
@@ -106,14 +108,44 @@ class _TransportScheduleState extends State<TransportSchedule> {
             return ListView.builder(
                 itemCount: transport.length,
                 itemBuilder: (context, index) {
-                  TransportSendDb transportid = transport[index].data();
-                  String transpoartID = transport[index].id;
+                  TransportSendDb transportID = transport[index].data();
+                  String transpoartsID = transport[index].id;
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                    child: ListTile(
-                      tileColor: Theme.of(context).colorScheme.primaryContainer,
-                      // title: Text(TransportSendDb.BusRoute),
-                      // subtitle: Text(TransportSendDb.WhereTo),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    child: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: GestureDetector(
+                          onLongPress: () {
+                            _databaseServises.deleteTransport(transportID as String);
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                transportID.BusRoute,
+                                style: const TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 5),
+                              Row(
+                                children: [
+                                  const Icon(Icons.location_on, size: 16),
+                                  const SizedBox(width: 5),
+                                  Text(transportID.WhereTo),
+                                ],
+                              ),
+                              const SizedBox(height: 5),
+                              Text(transportID.Time),
+                            ],
+                            
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 });

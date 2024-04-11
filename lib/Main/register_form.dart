@@ -37,10 +37,10 @@ class _RegisterState extends State<Register> {
   // String _Pass = "";
 
   Future singUp() async {
-
     // create user
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: Email.text.trim(), password: Pass.text.trim());
+    UserCredential userCredential = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+            email: Email.text.trim(), password: Pass.text.trim());
 
     // add user
     await FirebaseFirestore.instance.collection('users').add({
@@ -50,6 +50,13 @@ class _RegisterState extends State<Register> {
       'Mobile Number': Mobile.text,
       'Email': Email.text,
       'Password': Pass.text,
+    });
+    //reset details
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userCredential.user!.email)
+        .set({
+      'Email': Email.text.split('@')[0],
     });
   }
 

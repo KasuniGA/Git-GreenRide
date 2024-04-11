@@ -1,8 +1,11 @@
 // ignore_for_file: unnecessary_import
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:green/Main/login_form.dart';
+import 'package:green/profile.dart';
 import 'package:green/ride_sharedb/ride_share.dart';
 import 'package:green/second_screens/transport_schedule.dart';
 import 'package:green/second_screens/transport_widget.dart';
@@ -15,7 +18,6 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
- 
   Widget stwidet() {
     return Center(
       child: GestureDetector(
@@ -124,7 +126,19 @@ class _MainHomeState extends State<MainHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.of(context).pop(MaterialPageRoute(builder: (_) {
+                return const LoginPage();
+              }));
+            },
+          ),
+        ],
+      ),
       drawer: Drawer(
         child: Container(
           color: Colors.grey,
@@ -139,10 +153,10 @@ class _MainHomeState extends State<MainHome> {
               )),
               ListTile(
                 leading: const Icon(Icons.people),
-                title: const Text("User"),
+                title: const Text("Profile"),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                    return const TransportSchedule();
+                    return const UserProfile();
                   }));
                 },
               ),

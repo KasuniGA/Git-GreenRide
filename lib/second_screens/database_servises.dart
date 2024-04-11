@@ -28,4 +28,75 @@ class DatabaseServises {
   void addTransport(TransportSendDb transports) async {
     _transportRef.add(transports);
   }
+
+  void deleteTransport(String transportsID) {
+    _transportRef.doc(transportsID).delete();
+  }
 }
+
+
+//   R I D E          D A T A B A S E 
+
+
+const String RIDE_COLL_REF = "rideshare";
+
+class RideDatabaseServises {
+  final _firestore = FirebaseFirestore.instance;
+
+  late final CollectionReference _rideRef;
+
+  RideDatabaseServises() {
+    _rideRef = _firestore.collection(RIDE_COLL_REF).withConverter<RideSendDb>(
+        fromFirestore: (snapshots, _) => RideSendDb.fromJson(
+              snapshots.data()!,
+            ),
+        toFirestore: (RideSendDb, _) => RideSendDb.toJson());
+  }
+
+  Stream<QuerySnapshot> getRide() {
+    return _rideRef.snapshots();
+  }
+
+  void addRide(RideSendDb rides) async {
+    _rideRef.add(rides);
+  }
+
+  void deleteRide(String ridesID) {
+    _rideRef.doc(ridesID).delete();
+  }
+}
+
+
+//  R E T U R N      R I D E        D A T A B A S E 
+const String RETURN_RIDE_COLL_REF = "ridesharereturn";
+
+class ReturnRideDatabaseServises {
+  final _firestore = FirebaseFirestore.instance;
+
+  late final CollectionReference _returnrideRef;
+
+  ReturnRideDatabaseServises() {
+    _returnrideRef = _firestore.collection(RETURN_RIDE_COLL_REF).withConverter<ReturnRideSendDb>(
+        fromFirestore: (snapshots, _) => ReturnRideSendDb.fromJson(
+              snapshots.data()!,
+            ),
+        toFirestore: (ReturnRideSendDb, _) => ReturnRideSendDb.toJson());
+  }
+
+  Stream<QuerySnapshot> getReturnRide() {
+    return _returnrideRef.snapshots();
+  }
+
+  void addReturnRide(RideSendDb ridesr) async {
+    _returnrideRef.add(ridesr);
+  }
+
+  void deleteReturnRide(String ridesIDr) {
+    _returnrideRef.doc(ridesIDr).delete();
+  }
+}
+
+//        P R O F I L E            P A G E 
+
+//userData from snapshot
+  

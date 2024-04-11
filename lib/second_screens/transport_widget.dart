@@ -9,10 +9,6 @@ class TransportWidgetDb extends StatefulWidget {
 
   @override
   State<TransportWidgetDb> createState() => _TransportWidgetDbState();
-
-  toJson() {}
-
-  static fromJson(Map<String, dynamic> map) {}
 }
 
 class _TransportWidgetDbState extends State<TransportWidgetDb> {
@@ -23,7 +19,7 @@ class _TransportWidgetDbState extends State<TransportWidgetDb> {
   final busRoute = TextEditingController();
 
   Future sendData() async {
-    await FirebaseFirestore.instance.collection('users').add({
+    await FirebaseFirestore.instance.collection('transport').add({
       'BusRoute': busRoute.text,
       'WhereTo': busWhereTo.text,
       'Time': whatTime.text,
@@ -114,5 +110,13 @@ class _TransportWidgetDbState extends State<TransportWidgetDb> {
             )),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    busRoute.dispose();
+    busWhereTo.dispose();
+    whatTime.dispose();
+    super.dispose();
   }
 }
