@@ -11,9 +11,9 @@ class UserProfile extends StatefulWidget {
 
 class _UserProfileState extends State<UserProfile> {
   // Replace these with actual data retrieval logic
-  String userName = "John Doe";
-  String userEmail = "johndoe@example.com";
-  String userContact = "+1234567890";
+  String userName = "Test One";
+  String userEmail = "test@students.nsbm.ac.lk";
+  String userContact = "+94 123456789";
 
   // Flags to control edit mode
   bool isEditing = false;
@@ -46,94 +46,103 @@ class _UserProfileState extends State<UserProfile> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            // Profile picture (replace with your implementation)
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage(
-                  "assets/147142.png"), // Replace with your asset path
-            ),
-            const SizedBox(height: 20),
-            // User name
-            Row(
-              children: [
-                const Text(
-                  "Name:",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: TextField(
-                    controller: nameController,
-                    enabled: isEditing,
-                    decoration: const InputDecoration(
-                      hintText: "Enter your name",
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            // User email
-            Row(
-              children: [
-                const Text(
-                  "Email:",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: TextField(
-                    controller: emailController,
-                    enabled: false, // Email should generally not be editable
-                    decoration: const InputDecoration(
-                      hintText: "Your email address",
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            // User contact
-            Row(
-              children: [
-                const Text(
-                  "Contact:",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: TextField(
-                    controller: contactController,
-                    enabled: isEditing,
-                    decoration: const InputDecoration(
-                      hintText: "Enter your contact number",
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            // Update button (replace with backend call)
-            Visibility(
-              visible: isEditing,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Update user data in your database here
-                  // e.g., updateFirestoreUserData(nameController.text, contactController.text);
-                  setState(() {
-                    userName = nameController.text;
-                    userContact = contactController.text;
-                    isEditing = false;
-                  });
-                },
-                child: const Text("Update Profile"),
+      body: Container(
+        color: const Color.fromARGB(250, 179, 255, 224),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 80,
               ),
-            ),
-          ],
+
+              const CircleAvatar(
+                radius: 80,
+                backgroundImage: AssetImage("assets/147142.png"),
+              ),
+              const SizedBox(height: 180),
+              // User name
+              Row(
+                children: [
+                  const Text(
+                    "Name:",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(width: 40),
+                  Expanded(
+                    child: TextField(
+                      controller: nameController,
+                      enabled: isEditing,
+                      decoration: const InputDecoration(
+                        hintText: "Enter your name",
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 40),
+              // User email
+              Row(
+                children: [
+                  const Text(
+                    "Email:",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: TextField(
+                      controller: emailController,
+                      enabled: false,
+                      decoration: const InputDecoration(
+                        hintText: "Your email address",
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 40),
+              // User contact
+              Row(
+                children: [
+                  const Text(
+                    "Contact:",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: TextField(
+                      controller: contactController,
+                      enabled: isEditing,
+                      decoration: const InputDecoration(
+                        hintText: "Enter your contact number",
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 40),
+
+              Visibility(
+                visible: isEditing,
+                child: ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      userName = nameController.text;
+                      userContact = contactController.text;
+                      isEditing = false;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(250, 0, 153, 113),
+                  ),
+                  child: const Text(
+                    "Update Profile",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

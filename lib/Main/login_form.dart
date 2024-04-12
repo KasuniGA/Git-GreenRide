@@ -106,7 +106,10 @@ class _LoginPageState extends State<LoginPage> {
                   const Center(
                       child: Text(
                     "L O G I N ",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(250, 0, 77, 153)),
                   )),
                   const SizedBox(
                     height: 60,
@@ -149,17 +152,24 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Center(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          signIn();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.grey[200],
-                        ),
-                        child: const Text(
-                          "SIGNIN",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
+                    child: SizedBox(
+                      height: 60,
+                      width: 350,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            signIn();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(250, 0, 77, 153),
+                          ),
+                          child: const Text(
+                            "LOGIN",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          )),
+                    ),
                   ),
                 ],
               ),

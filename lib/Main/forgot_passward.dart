@@ -85,60 +85,72 @@ class _ForgotpassState extends State<Forgotpass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Form(
-          child: ListView(
-            children: [
-              const Icon(
-                Icons.lock,
-                size: 100,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  const Center(
-                      child: Text(
-                        "Reset Your Password",
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        body: Container(
+      color: const Color.fromARGB(250, 179, 255, 224),
+      child: Form(
+        child: ListView(
+          children: [
+            const SizedBox(
+              height: 100,
+            ),
+            const Icon(
+              Icons.lock,
+              size: 100,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                const Center(
+                    child: Text(
+                  "Reset Your Password",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                )),
+                const SizedBox(
+                  height: 40,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                  child: _email(),
+                ),
+                // Padding(
+                //   padding:
+                //       const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                //   child: _password(),
+                // ),
+                // Padding(
+                //   padding:
+                //       const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                //   child: _cpassword(),
+                // ),
+                const SizedBox(
+                  height: 80,
+                ),
+                Center(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        reset();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(250, 0, 153, 115),
+                      ),
+                      child: const Text(
+                        "Reset Password",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
                       )),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                    child: _email(),
-                  ),
-                  // Padding(
-                  //   padding:
-                  //       const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                  //   child: _password(),
-                  // ),
-                  // Padding(
-                  //   padding:
-                  //       const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                  //   child: _cpassword(),
-                  // ),
-                  Center(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          reset();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.grey[200],
-                        ),
-                        child: const Text(
-                          "Reset Password",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ));
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ));
   }
-  @override
 
+  @override
   void dispose() {
     Email.dispose();
     super.dispose();
-
   }
 }

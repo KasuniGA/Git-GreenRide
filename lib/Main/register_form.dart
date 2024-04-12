@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, unused_field, file_names, prefer_final_fields, unused_local_variable
+// ignore_for_file: non_constant_identifier_names, unused_field, file_names, prefer_final_fields, unused_local_variable, unnecessary_const
 
 import 'dart:async';
 
@@ -112,7 +112,7 @@ class _RegisterState extends State<Register> {
       ),
       validator: (sid) {
         if (sid!.isEmpty) {
-          return 'First name cannot be Empty';
+          return 'Student ID cannot be Empty';
         }
         return null;
       },
@@ -153,7 +153,7 @@ class _RegisterState extends State<Register> {
 
       validator: (email) {
         if (email!.isEmpty) {
-          return 'First name cannot be Empty';
+          return 'Email cannot be Empty';
         }
         if (EmailValidator.validate(email) != true) {
           return 'not an validate email';
@@ -177,7 +177,7 @@ class _RegisterState extends State<Register> {
       controller: Pass,
       obscureText: !_passwordvisible,
       decoration: InputDecoration(
-          filled: true,
+
           //fillColor: darktheme ? Colors.black45 : Colors.grey.shade200,
           border: const OutlineInputBorder(),
           labelText: 'Enter your Password',
@@ -191,7 +191,7 @@ class _RegisterState extends State<Register> {
               })),
       validator: (pass) {
         if (pass!.length < 6) {
-          return 'First name cannot be Empty';
+          return 'Create Strong Password';
         }
         return null;
       },
@@ -203,7 +203,7 @@ class _RegisterState extends State<Register> {
       controller: Pass2,
       obscureText: !_passwordvisible,
       decoration: InputDecoration(
-          filled: true,
+
           //fillColor: darktheme ? Colors.black45 : Colors.grey.shade200,
           border: const OutlineInputBorder(),
           labelText: 'Enter your Password',
@@ -233,76 +233,102 @@ class _RegisterState extends State<Register> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-          appBar: AppBar(),
-          body: SingleChildScrollView(
-            child: Form(
-              key: _formkey,
-              child: Container(
-                margin: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    const Center(
-                      child: Text(
-                        "Rigister Form",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
+          appBar: AppBar(
+            actions: const [
+              Image(
+                  image:
+                      AssetImage("assets/logo_trial-VqAv6Aw70-transformed.png"))
+            ],
+          ),
+          body: Container(
+            color: const Color.fromARGB(250, 153, 204, 253),
+            child: SingleChildScrollView(
+              child: Form(
+                key: _formkey,
+                child: Container(
+                  margin: const EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      const Center(
+                        child: Text(
+                          "S I G N U P ",
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(250, 0, 77, 153)),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _firstname(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _lastName(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _studentId(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _mobilenum(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _email(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _password(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _password2(),
-                    ),
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 30.0, top: 15.0),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              if (_formkey.currentState!.validate()) {
-                                singUp();
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (_) {
-                                  return const LoginPage();
-                                }));
-                              } else {}
-                            },
-                            child: const Text("Sign Up")),
+                      const SizedBox(
+                        height: 20,
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        child: _firstname(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        child: _lastName(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        child: _studentId(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        child: _mobilenum(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        child: _email(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        child: _password(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 16),
+                        child: _password2(),
+                      ),
+                      Center(
+                        child: Padding(
+                          padding:
+                              const EdgeInsets.only(bottom: 30.0, top: 15.0),
+                          child: SizedBox(
+                            height: 60,
+                            width: 350,
+                            child: ElevatedButton(
+                                onPressed: () async {
+                                  if (_formkey.currentState!.validate()) {
+                                    singUp();
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(builder: (_) {
+                                      return const LoginPage();
+                                    }));
+                                  } else {}
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(250, 0, 77, 153),
+                                ),
+                                child: const Text(
+                                  "SIGNIN",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

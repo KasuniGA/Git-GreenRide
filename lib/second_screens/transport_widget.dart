@@ -60,54 +60,67 @@ class _TransportWidgetDbState extends State<TransportWidgetDb> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Form(
-            key: _transportform,
-            child: Container(
-              margin: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  const Center(
-                    child: Text(
-                      "Enter Transport Details",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+      body: Container(
+        color: const Color.fromARGB(250, 179, 255, 224),
+        child: SingleChildScrollView(
+          child: Form(
+              key: _transportform,
+              child: Container(
+                margin: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    const Center(
+                      child: Text(
+                        "Enter Transport Details",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
-                    child: _busroute(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
-                    child: _whereto(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
-                    child: _time(),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 30.0, top: 15.0),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            sendData();
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (_) {
-                              return const TransportSchedule();
-                            }));
-                          },
-                          child: const Text("Send Data")),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16),
+                      child: _busroute(),
                     ),
-                  ),
-                ],
-              ),
-            )),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16),
+                      child: _whereto(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16),
+                      child: _time(),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 30.0, top: 15.0),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              sendData();
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (_) {
+                                return const TransportSchedule();
+                              }));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromARGB(250, 0, 153, 115),
+                            ),
+                            child: const Text(
+                              "Send Data",
+                              style: TextStyle(color: Colors.white),
+                            )),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 300,
+                    )
+                  ],
+                ),
+              )),
+        ),
       ),
     );
   }

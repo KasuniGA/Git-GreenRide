@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, file_names, unused_import, unused_local_variable
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:green/home_page/main_home.dart';
 import 'package:green/profile.dart';
 import 'package:green/ride_sharedb/return_ride.dart';
 import 'package:green/ride_sharedb/share_button.dart';
@@ -243,13 +244,13 @@ class _RideShareState extends State<RideShare> {
                   ListTile(
                     leading: const Icon(Icons.people),
                     title: const Text(
-                      "U S E R",
+                      "P R O F I L E",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (_) {
-                        return const TransportSchedule();
+                        return const UserProfile();
                       }));
                     },
                   ),
@@ -260,8 +261,8 @@ class _RideShareState extends State<RideShare> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     onTap: () {
-                      Navigator.of(context).pop(MaterialPageRoute(builder: (_) {
-                        return const UserProfile();
+                      Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                        return const MainHome();
                       }));
                     },
                   ),

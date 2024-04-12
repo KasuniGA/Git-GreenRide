@@ -94,69 +94,80 @@ class _ReturnShareButtonState extends State<ReturnShareButton> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Form(
-            key: _ridebutton,
-            child: Container(
-              margin: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  const Center(
-                    child: Text(
-                      "Enter Ride Details",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+      body: Container(
+        color: const Color.fromARGB(250, 153, 221, 255),
+        child: SingleChildScrollView(
+          child: Form(
+              key: _ridebutton,
+              child: Container(
+                color: const Color.fromARGB(250, 153, 221, 255),
+                margin: const EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    const Center(
+                      child: Text(
+                        "Enter Ride Details",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
-                    child: _vehicleNo(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
-                    child: _driverName(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
-                    child: _pgoneNo(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
-                    child: _avalaibleSeats(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
-                    child: _vehicleModle(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 16),
-                    child: _fromRoute(),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 30.0, top: 15.0),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            sride();
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (_) {
-                              return const RideShare();
-                            }));
-                          },
-                          child: const Text("Send Data")),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16),
+                      child: _vehicleNo(),
                     ),
-                  ),
-                ],
-              ),
-            )),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16),
+                      child: _driverName(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16),
+                      child: _pgoneNo(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16),
+                      child: _avalaibleSeats(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16),
+                      child: _vehicleModle(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 16),
+                      child: _fromRoute(),
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 30.0, top: 15.0),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              sride();
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (_) {
+                                return const RideShare();
+                              }));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromARGB(250, 0, 77, 153),
+                            ),
+                            child: const Text(
+                              "ADD",
+                              style: TextStyle(color: Colors.white),
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+        ),
       ),
     );
   }
