@@ -1,4 +1,3 @@
-
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
@@ -55,7 +54,7 @@ class _UserProfileState extends State<UserProfile> {
             const CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage(
-                  "assets/profile_pic.png"), // Replace with your asset path
+                  "assets/147142.png"), // Replace with your asset path
             ),
             const SizedBox(height: 20),
             // User name
@@ -144,5 +143,5 @@ class _UserProfileState extends State<UserProfile> {
   void updateFirestoreUserData(String name, String contact) {
     // Implement your logic to update data in Firestore or your chosen backend
     print("Updating user data: name: $name, contact");
-    }
+  }
 }

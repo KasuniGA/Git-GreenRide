@@ -35,7 +35,7 @@ class _ShareButtonState extends State<ShareButton> {
       controller: vehicleno,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Enter bus ',
+        labelText: 'Vehicle No ',
       ),
     );
   }
@@ -45,7 +45,7 @@ class _ShareButtonState extends State<ShareButton> {
       controller: dname,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Where to',
+        labelText: 'Drivrs Name',
       ),
     );
   }
@@ -55,7 +55,7 @@ class _ShareButtonState extends State<ShareButton> {
       controller: driverphoneno,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Enter Time',
+        labelText: 'Mobile Number',
       ),
     );
   }
@@ -65,7 +65,7 @@ class _ShareButtonState extends State<ShareButton> {
       controller: avalibleseats,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Enter bus ',
+        labelText: 'Avalible Seats For Sharing ',
       ),
     );
   }
@@ -75,7 +75,7 @@ class _ShareButtonState extends State<ShareButton> {
       controller: vehiclemodle,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Where to',
+        labelText: 'Vehicle Modle : ',
       ),
     );
   }
@@ -85,7 +85,7 @@ class _ShareButtonState extends State<ShareButton> {
       controller: fromroute,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Enter Time',
+        labelText: 'From Locatin',
       ),
     );
   }

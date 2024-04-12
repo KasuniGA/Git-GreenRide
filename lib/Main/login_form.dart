@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       validator: (pass) {
         if (pass!.isEmpty) {
-          return 'First name cannot be Empty';
+          return 'Enter correct password';
         }
         return null;
       },
@@ -84,74 +84,86 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: const [
+          Image(
+              image: AssetImage("assets/logo_trial-VqAv6Aw70-transformed.png"))
+        ],
+      ),
       body: Form(
         key: _loginkey,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(70, 30, 70, 100),
-          child: Container(
-            decoration: BoxDecoration(
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(20)),
-            child: ListView(
-              children: [
-                const Icon(
-                  Icons.lock,
-                  size: 100,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    const Center(
-                        child: Text(
-                      "Login",
+        child: Container(
+          color: const Color.fromARGB(250, 153, 204, 253),
+          child: ListView(
+            children: [
+              const SizedBox(
+                height: 100,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Center(
+                      child: Text(
+                    "L O G I N ",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  )),
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  const Center(
+                    child: Text(
+                      "Unlock Your Journey with GreenRide",
                       style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    )),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _email(),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 16),
-                      child: _password(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (_) {
-                                return const Forgotpass();
-                              }));
-                            },
-                            child: const Text("Forgot Password"),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Center(
-                      child: ElevatedButton(
-                          onPressed: () {
-                            signIn();
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 16),
+                    child: _email(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 16),
+                    child: _password(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (_) {
+                              return const Forgotpass();
+                            }));
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey[200],
-                          ),
-                          child: const Text(
-                            "Sign In",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          )),
+                          child: const Text("Forgot Password"),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                          signIn();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.grey[200],
+                        ),
+                        child: const Text(
+                          "SIGN",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
