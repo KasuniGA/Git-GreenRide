@@ -287,7 +287,7 @@ class _RideShareState extends State<RideShare> {
                             onPressed: () {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (_) {
-                                return const ReturnShareButton();
+                                return const ShareButton();
                               }));
                             },
                             child: const Text(

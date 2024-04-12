@@ -157,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                           backgroundColor: Colors.grey[200],
                         ),
                         child: const Text(
-                          "SIGN",
+                          "SIGNIN",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )),
                   ),

@@ -35,7 +35,7 @@ class _ReturnShareButtonState extends State<ReturnShareButton> {
       controller: rvehicleno,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Enter bus ',
+        labelText: 'Enter Vehicle No',
       ),
     );
   }
@@ -45,7 +45,7 @@ class _ReturnShareButtonState extends State<ReturnShareButton> {
       controller: rdname,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Where to',
+        labelText: 'Drivers Name',
       ),
     );
   }
@@ -55,7 +55,7 @@ class _ReturnShareButtonState extends State<ReturnShareButton> {
       controller: rdriverphoneno,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Enter Time',
+        labelText: 'Mobile Number',
       ),
     );
   }
@@ -65,7 +65,7 @@ class _ReturnShareButtonState extends State<ReturnShareButton> {
       controller: ravalibleseats,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Enter bus ',
+        labelText: 'Avalible Seats',
       ),
     );
   }
@@ -75,7 +75,7 @@ class _ReturnShareButtonState extends State<ReturnShareButton> {
       controller: rvehiclemodle,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Where to',
+        labelText: 'Vehicle Modle',
       ),
     );
   }
@@ -85,7 +85,7 @@ class _ReturnShareButtonState extends State<ReturnShareButton> {
       controller: rfromroute,
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
-        labelText: 'Enter Time',
+        labelText: 'Where To',
       ),
     );
   }
